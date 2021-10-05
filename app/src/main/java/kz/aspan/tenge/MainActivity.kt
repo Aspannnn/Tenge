@@ -29,6 +29,8 @@ class MainActivity : AppCompatActivity() {
                 binding.salaryForTheYearTv.text = getString(R.string.tengeSymbol, salaryForTheYear)
             } else {
                 binding.salaryPerMonthTv.text = getString(R.string.tengeSymbol, num)
+                binding.salaryPerYearTv.text = getString(R.string.tengeSymbol, num * 12)
+                binding.salaryForTheYearTv.text = getString(R.string.tengeSymbol, num *12)
                 binding.opvTv.text = getString(R.string.tengeSymbol, 0.00)
                 binding.ipnTv.text = getString(R.string.tengeSymbol, 0.00)
             }
