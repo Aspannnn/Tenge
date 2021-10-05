@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Tenge</string>
+    <string name="tenge">₸</string>
+    <string name="tengeSymbol">%.2f ₸</string>
+</resources>
