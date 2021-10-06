@@ -3,9 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/tropical_blue"
     tools:context=".MainActivity">
 
+    <!--    android:background="@color/tropical_blue"-->
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -46,13 +46,12 @@
 
         <TextView
             android:id="@+id/salaryTv"
+            style="@style/TextViewStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="4dp"
-            android:text="0.00 ₸"
-            android:textColor="@color/tuna"
-            android:textSize="25sp" />
+            android:text="0.00 ₸" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -63,13 +62,12 @@
 
         <TextView
             android:id="@+id/opvTv"
+            style="@style/TextViewStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="4dp"
-            android:text="0.00 ₸"
-            android:textColor="@color/tuna"
-            android:textSize="25sp" />
+            android:text="0.00 ₸" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -80,13 +78,12 @@
 
         <TextView
             android:id="@+id/ipnTv"
+            style="@style/TextViewStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="4dp"
-            android:text="0.00 ₸"
-            android:textColor="@color/tuna"
-            android:textSize="25sp" />
+            android:text="0.00 ₸" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -97,13 +94,12 @@
 
         <TextView
             android:id="@+id/salaryPerMonthTv"
+            style="@style/TextViewStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="4dp"
-            android:text="0.00 ₸"
-            android:textColor="@color/tuna"
-            android:textSize="25sp" />
+            android:text="0.00 ₸" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -114,13 +110,12 @@
 
         <TextView
             android:id="@+id/salaryPerYearTv"
+            style="@style/TextViewStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="4dp"
-            android:text="0.00 ₸"
-            android:textColor="@color/tuna"
-            android:textSize="25sp" />
+            android:text="0.00 ₸" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -131,13 +126,12 @@
 
         <TextView
             android:id="@+id/salaryForTheYearTv"
+            style="@style/TextViewStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="4dp"
-            android:text="0.00 ₸"
-            android:textColor="@color/tuna"
-            android:textSize="25sp" />
+            android:text="0.00 ₸" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
