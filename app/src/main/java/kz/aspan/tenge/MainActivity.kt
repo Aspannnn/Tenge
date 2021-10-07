@@ -2,38 +2,193 @@ package kz.aspan.tenge
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.core.widget.addTextChangedListener
+import android.text.Editable
+import android.text.TextWatcher
 import kz.aspan.tenge.databinding.ActivityMainBinding
+import java.text.DecimalFormat
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+    private var onHand: Boolean = false
+    private var calculateSalary = CalculateSalary()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.salaryEt.addTextChangedListener {
-            val num: Double = if (it.isNullOrBlank()) 0.00 else it.toString().toDouble()
-            binding.salaryTv.text = getString(R.string.tengeSymbol, num)
-            if (num >= 42500) {
-                val opv: Double = num * 0.1
-                val ipn: Double = (num - opv - 42500) * 0.1
-                val salaryPerMonth: Double = num - opv - ipn
-                val salaryPerYear: Double = salaryPerMonth * 12
-                val salaryForTheYear: Double = num * 12
-                binding.opvTv.text = getString(R.string.tengeSymbol, opv)
-                binding.ipnTv.text = getString(R.string.tengeSymbol, if (ipn > 0) ipn else 0.00)
-                binding.salaryPerMonthTv.text = getString(R.string.tengeSymbol, salaryPerMonth)
-                binding.salaryPerYearTv.text = getString(R.string.tengeSymbol, salaryPerYear)
-                binding.salaryForTheYearTv.text = getString(R.string.tengeSymbol, salaryForTheYear)
+        binding.apply {
+//            salaryEt.addTextChangedListener {
+//                val num: Double = if (it.isNullOrBlank()) 0.00 else it.toString().toDouble()
+//
+//                salaryTv.text = getString(R.string.tengeSymbol, formatAmount(num))
+//                if (num >= 42500) {
+//                    val opv: Double = num * 0.1
+//                    val ipn: Double = (num - opv - 42500) * 0.1
+//                    val salaryPerMonth: Double = num - opv - ipn
+//                    val salaryPerYear: Double = salaryPerMonth * 12
+//                    val salaryForTheYear: Double = num * 12
+//
+//
+//                    opvTv.text = getString(R.string.tengeSymbol, formatAmount(opv))
+//                    ipnTv.text =
+//                        getString(R.string.tengeSymbol, if (ipn > 0) formatAmount(ipn) else 0.00)
+//                    salaryPerMonthTv.text =
+//                        getString(R.string.tengeSymbol, formatAmount(salaryPerMonth))
+//                    salaryPerYearTv.text =
+//                        getString(R.string.tengeSymbol, formatAmount(salaryPerYear))
+//                    salaryForTheYearTv.text =
+//                        getString(R.string.tengeSymbol, formatAmount(salaryForTheYear))
+//                } else {
+//                    salaryPerMonthTv.text =
+//                        getString(R.string.tengeSymbol, formatAmount(num))
+//                    salaryPerYearTv.text =
+//                        getString(R.string.tengeSymbol, formatAmount(num * 12))
+//                    salaryForTheYearTv.text =
+//                        getString(R.string.tengeSymbol, formatAmount(num * 12))
+//                    opvTv.text = getString(R.string.tengeSymbol, "0.00")
+//                    ipnTv.text = getString(R.string.tengeSymbol, "0.00")
+//                }
+//            }
+
+            onHandsCb.setOnCheckedChangeListener { _, isChecked ->
+                onHand = isChecked
+                val num = salaryEt.text?.replace("\\s+".toRegex(), "") ?: "0"
+                val salary = if (onHand) {
+                    (num.toDouble() - 4250) / 0.81
+                } else {
+                    num.toDouble()
+                }
+                calculateSalary = CalculateSalary(if (salary < 0) num.toDouble() else salary)
+                displayInfo()
+            }
+
+
+            salaryEt.addTextChangedListener(object : TextWatcher {
+                private var current = ""
+                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                }
+
+                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                    if (p0.toString() != current) {
+                        salaryEt.removeTextChangedListener(this)
+
+                        val cleanString: String = if (p0.isNullOrEmpty()) {
+                            "0.00"
+                        } else {
+                            p0.replace("\\s+".toRegex(), "")
+                        }
+
+                        val num: Double = if (onHand) {
+                            (cleanString.toDouble() - 4250) / 0.81
+                        } else {
+                            cleanString.toDouble()
+                        }
+
+
+                        val formatted =
+                            formatAmountDecimal(if (num < 0) cleanString.toDouble() else num)
+
+                        calculateSalary =
+                            CalculateSalary(if (num < 0) cleanString.toDouble() else num)
+
+                        displayInfo()
+
+//                        salaryTv.text = formatAmountDecimal(calculateSalary.salary)
+//                        if (num >= 42500) {
+//                            opvTv.text = formatAmountDecimal(calculateSalary.opv())
+//                            ipnTv.text = formatAmountDecimal(calculateSalary.ipn())
+//                            monthlyWageTv.text = formatAmountDecimal(calculateSalary.monthlyWage())
+//                            wagePerYearTv.text = formatAmountDecimal(calculateSalary.wagePerYear())
+//                            salaryPerYearTv.text =
+//                                formatAmountDecimal(calculateSalary.salaryPerYear())
+//                        } else {
+//                            monthlyWageTv.text = formatAmountDecimal(calculateSalary.salary)
+//                            wagePerYearTv.text = formatAmountDecimal(calculateSalary.salary * 12)
+//                            salaryPerYearTv.text = formatAmountDecimal(calculateSalary.salary * 12)
+//                            opvTv.text = "0.00"
+//                            ipnTv.text = "0.00"
+//                        }
+
+//                        salaryTv.text = getString(R.string.tengeSymbol, formatAmountDecimal(num))
+//                        if (num >= 42500) {
+//                            val opv: Double = num * 0.1
+//                            val ipn: Double = (num - opv - 42500) * 0.1
+//                            val salaryPerMonth: Double = num - opv - ipn
+//                            val salaryPerYear: Double = salaryPerMonth * 12
+//                            val salaryForTheYear: Double = num * 12
+//
+//
+//                            opvTv.text = getString(R.string.tengeSymbol, formatAmountDecimal(opv))
+//                            ipnTv.text =
+//                                getString(
+//                                    R.string.tengeSymbol,
+//                                    if (ipn > 0) formatAmountDecimal(ipn) else 0.00
+//                                )
+//                            salaryPerMonthTv.text =
+//                                getString(R.string.tengeSymbol, formatAmountDecimal(salaryPerMonth))
+//                            salaryPerYearTv.text =
+//                                getString(R.string.tengeSymbol, formatAmountDecimal(salaryPerYear))
+//                            salaryForTheYearTv.text =
+//                                getString(
+//                                    R.string.tengeSymbol,
+//                                    formatAmountDecimal(salaryForTheYear)
+//                                )
+//                        } else {
+//                            salaryPerMonthTv.text =
+//                                getString(R.string.tengeSymbol, formatAmountDecimal(num))
+//                            salaryPerYearTv.text =
+//                                getString(R.string.tengeSymbol, formatAmountDecimal(num * 12))
+//                            salaryForTheYearTv.text =
+//                                getString(R.string.tengeSymbol, formatAmountDecimal(num * 12))
+//                            opvTv.text = getString(R.string.tengeSymbol, "0.00")
+//                            ipnTv.text = getString(R.string.tengeSymbol, "0.00")
+//                        }
+
+                        current = formatted
+                        salaryEt.setText(formatAmount(cleanString))
+                        salaryEt.setSelection(formatAmount(cleanString).length)
+                        salaryEt.addTextChangedListener(this)
+                    }
+                }
+
+                override fun afterTextChanged(p0: Editable?) {
+                }
+            })
+        }
+
+    }
+
+    private fun displayInfo() {
+        binding.apply {
+            salaryTv.text = formatAmountDecimal(calculateSalary.salary)
+            if (calculateSalary.salary >= 42500) {
+                opvTv.text = formatAmountDecimal(calculateSalary.opv())
+                ipnTv.text = formatAmountDecimal(calculateSalary.ipn())
+                monthlyWageTv.text = formatAmountDecimal(calculateSalary.monthlyWage())
+                wagePerYearTv.text = formatAmountDecimal(calculateSalary.wagePerYear())
+                salaryPerYearTv.text =
+                    formatAmountDecimal(calculateSalary.salaryPerYear())
             } else {
-                binding.salaryPerMonthTv.text = getString(R.string.tengeSymbol, num)
-                binding.salaryPerYearTv.text = getString(R.string.tengeSymbol, num * 12)
-                binding.salaryForTheYearTv.text = getString(R.string.tengeSymbol, num *12)
-                binding.opvTv.text = getString(R.string.tengeSymbol, 0.00)
-                binding.ipnTv.text = getString(R.string.tengeSymbol, 0.00)
+                monthlyWageTv.text = formatAmountDecimal(calculateSalary.salary)
+                wagePerYearTv.text = formatAmountDecimal(calculateSalary.salary * 12)
+                salaryPerYearTv.text = formatAmountDecimal(calculateSalary.salary * 12)
+                opvTv.text = "0.00"
+                ipnTv.text = "0.00"
             }
         }
     }
+
+
+    private fun formatAmountDecimal(num: Double): String {
+        return getString(
+            R.string.tengeSymbol,
+            DecimalFormat("###,##0.00").format(num).replace(',', ' ')
+        )
+    }
+
+    private fun formatAmount(num: String): String {
+        return DecimalFormat("###,###").format(num.toDouble()).replace(',', ' ')
+    }
+
 }

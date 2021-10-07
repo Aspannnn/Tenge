@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <!--    android:background="@color/tropical_blue"-->
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -37,11 +36,31 @@
             android:textColor="@color/tuna"
             android:textSize="25sp" />
 
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="На руки" />
+
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/onHandsCb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="4dp"
             android:text="Оклад" />
 
         <TextView
@@ -93,7 +112,7 @@
             android:text="Заработная плата в месяц" />
 
         <TextView
-            android:id="@+id/salaryPerMonthTv"
+            android:id="@+id/monthlyWageTv"
             style="@style/TextViewStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -109,7 +128,7 @@
             android:text="Заработная плата за год" />
 
         <TextView
-            android:id="@+id/salaryPerYearTv"
+            android:id="@+id/wagePerYearTv"
             style="@style/TextViewStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -125,7 +144,7 @@
             android:text="Оклад за год" />
 
         <TextView
-            android:id="@+id/salaryForTheYearTv"
+            android:id="@+id/salaryPerYearTv"
             style="@style/TextViewStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
