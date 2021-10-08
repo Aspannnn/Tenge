@@ -1,6 +1,17 @@
 <resources>
     <string name="app_name">Tenge</string>
-    <string name="tenge">₸</string>
     <string name="tengeSymbol">%s ₸</string>
-<!--    <string name="tengeSymbol">%.2f ₸</string>-->
+    <string name="enterYourSalaryPerMonthInTheTenge">Введите свою заработную плату в месяц в теңге</string>
+    <string name="defaultValue">0</string>
+    <string name="defaultValueWithDecimal">0.00</string>
+    <string name="defaultValueDecimalTenge">0.00 ₸</string>
+    <string name="onHands">На руки</string>
+    <string name="wage">Оклад</string>
+    <string name="opv">ОПВ</string>
+    <string name="ipn">ИПН</string>
+    <string name="monthlyWage">Заработная плата в месяц</string>
+    <string name="wagePerYear">Заработная плата за год</string>
+    <string name="salaryPerYear">Оклад за год</string>
+
+    <!--    <string name="tengeSymbol">%.2f ₸</string>-->
 </resources>

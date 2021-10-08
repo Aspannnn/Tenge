@@ -15,24 +15,25 @@
         android:background="@drawable/white_shape"
         android:orientation="vertical">
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="40dp"
-            android:text="Введите свою заработную плату в месяц в теңге" />
+            android:text="@string/enterYourSalaryPerMonthInTheTenge" />
 
-        <androidx.appcompat.widget.AppCompatEditText
+
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/salaryEt"
             android:layout_width="300dp"
             android:layout_height="46dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="4dp"
             android:background="@null"
-            android:hint="0 ₸"
             android:inputType="number"
             android:lines="1"
             android:maxLength="19"
+            android:text="@string/defaultValue"
             android:textColor="@color/tuna"
             android:textSize="25sp" />
 
@@ -41,118 +42,117 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:text="На руки" />
+                android:text="@string/onHands" />
 
 
-            <androidx.appcompat.widget.AppCompatCheckBox
+            <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/onHandsCb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
-
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="4dp"
-            android:text="Оклад" />
+            android:text="@string/wage" />
 
-        <TextView
+
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/salaryTv"
             style="@style/TextViewStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="4dp"
-            android:text="0.00 ₸" />
+            android:text="@string/defaultValueDecimalTenge" />
 
-        <TextView
+
+        <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="16dp"
-            android:text="ОПВ" />
+            android:text="@string/opv" />
 
-        <TextView
+
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/opvTv"
             style="@style/TextViewStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="4dp"
-            android:text="0.00 ₸" />
+            android:text="@string/defaultValueDecimalTenge" />
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="16dp"
-            android:text="ИПН" />
+            android:text="@string/ipn" />
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/ipnTv"
             style="@style/TextViewStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="4dp"
-            android:text="0.00 ₸" />
+            android:text="@string/defaultValueDecimalTenge" />
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="16dp"
-            android:text="Заработная плата в месяц" />
+            android:text="@string/monthlyWage" />
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/monthlyWageTv"
             style="@style/TextViewStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="4dp"
-            android:text="0.00 ₸" />
+            android:text="@string/defaultValueDecimalTenge" />
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="16dp"
-            android:text="Заработная плата за год" />
+            android:text="@string/wagePerYear" />
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/wagePerYearTv"
             style="@style/TextViewStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="4dp"
-            android:text="0.00 ₸" />
+            android:text="@string/defaultValueDecimalTenge" />
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="16dp"
-            android:text="Оклад за год" />
+            android:text="@string/salaryPerYear" />
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/salaryPerYearTv"
             style="@style/TextViewStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="4dp"
-            android:text="0.00 ₸" />
-
+            android:text="@string/defaultValueDecimalTenge" />
     </androidx.appcompat.widget.LinearLayoutCompat>
-
-
 </androidx.appcompat.widget.LinearLayoutCompat>

@@ -18,38 +18,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.apply {
-//            salaryEt.addTextChangedListener {
-//                val num: Double = if (it.isNullOrBlank()) 0.00 else it.toString().toDouble()
-//
-//                salaryTv.text = getString(R.string.tengeSymbol, formatAmount(num))
-//                if (num >= 42500) {
-//                    val opv: Double = num * 0.1
-//                    val ipn: Double = (num - opv - 42500) * 0.1
-//                    val salaryPerMonth: Double = num - opv - ipn
-//                    val salaryPerYear: Double = salaryPerMonth * 12
-//                    val salaryForTheYear: Double = num * 12
-//
-//
-//                    opvTv.text = getString(R.string.tengeSymbol, formatAmount(opv))
-//                    ipnTv.text =
-//                        getString(R.string.tengeSymbol, if (ipn > 0) formatAmount(ipn) else 0.00)
-//                    salaryPerMonthTv.text =
-//                        getString(R.string.tengeSymbol, formatAmount(salaryPerMonth))
-//                    salaryPerYearTv.text =
-//                        getString(R.string.tengeSymbol, formatAmount(salaryPerYear))
-//                    salaryForTheYearTv.text =
-//                        getString(R.string.tengeSymbol, formatAmount(salaryForTheYear))
-//                } else {
-//                    salaryPerMonthTv.text =
-//                        getString(R.string.tengeSymbol, formatAmount(num))
-//                    salaryPerYearTv.text =
-//                        getString(R.string.tengeSymbol, formatAmount(num * 12))
-//                    salaryForTheYearTv.text =
-//                        getString(R.string.tengeSymbol, formatAmount(num * 12))
-//                    opvTv.text = getString(R.string.tengeSymbol, "0.00")
-//                    ipnTv.text = getString(R.string.tengeSymbol, "0.00")
-//                }
-//            }
 
             onHandsCb.setOnCheckedChangeListener { _, isChecked ->
                 onHand = isChecked
@@ -94,57 +62,6 @@ class MainActivity : AppCompatActivity() {
 
                         displayInfo()
 
-//                        salaryTv.text = formatAmountDecimal(calculateSalary.salary)
-//                        if (num >= 42500) {
-//                            opvTv.text = formatAmountDecimal(calculateSalary.opv())
-//                            ipnTv.text = formatAmountDecimal(calculateSalary.ipn())
-//                            monthlyWageTv.text = formatAmountDecimal(calculateSalary.monthlyWage())
-//                            wagePerYearTv.text = formatAmountDecimal(calculateSalary.wagePerYear())
-//                            salaryPerYearTv.text =
-//                                formatAmountDecimal(calculateSalary.salaryPerYear())
-//                        } else {
-//                            monthlyWageTv.text = formatAmountDecimal(calculateSalary.salary)
-//                            wagePerYearTv.text = formatAmountDecimal(calculateSalary.salary * 12)
-//                            salaryPerYearTv.text = formatAmountDecimal(calculateSalary.salary * 12)
-//                            opvTv.text = "0.00"
-//                            ipnTv.text = "0.00"
-//                        }
-
-//                        salaryTv.text = getString(R.string.tengeSymbol, formatAmountDecimal(num))
-//                        if (num >= 42500) {
-//                            val opv: Double = num * 0.1
-//                            val ipn: Double = (num - opv - 42500) * 0.1
-//                            val salaryPerMonth: Double = num - opv - ipn
-//                            val salaryPerYear: Double = salaryPerMonth * 12
-//                            val salaryForTheYear: Double = num * 12
-//
-//
-//                            opvTv.text = getString(R.string.tengeSymbol, formatAmountDecimal(opv))
-//                            ipnTv.text =
-//                                getString(
-//                                    R.string.tengeSymbol,
-//                                    if (ipn > 0) formatAmountDecimal(ipn) else 0.00
-//                                )
-//                            salaryPerMonthTv.text =
-//                                getString(R.string.tengeSymbol, formatAmountDecimal(salaryPerMonth))
-//                            salaryPerYearTv.text =
-//                                getString(R.string.tengeSymbol, formatAmountDecimal(salaryPerYear))
-//                            salaryForTheYearTv.text =
-//                                getString(
-//                                    R.string.tengeSymbol,
-//                                    formatAmountDecimal(salaryForTheYear)
-//                                )
-//                        } else {
-//                            salaryPerMonthTv.text =
-//                                getString(R.string.tengeSymbol, formatAmountDecimal(num))
-//                            salaryPerYearTv.text =
-//                                getString(R.string.tengeSymbol, formatAmountDecimal(num * 12))
-//                            salaryForTheYearTv.text =
-//                                getString(R.string.tengeSymbol, formatAmountDecimal(num * 12))
-//                            opvTv.text = getString(R.string.tengeSymbol, "0.00")
-//                            ipnTv.text = getString(R.string.tengeSymbol, "0.00")
-//                        }
-
                         current = formatted
                         salaryEt.setText(formatAmount(cleanString))
                         salaryEt.setSelection(formatAmount(cleanString).length)
@@ -156,7 +73,6 @@ class MainActivity : AppCompatActivity() {
                 }
             })
         }
-
     }
 
     private fun displayInfo() {
@@ -173,8 +89,8 @@ class MainActivity : AppCompatActivity() {
                 monthlyWageTv.text = formatAmountDecimal(calculateSalary.salary)
                 wagePerYearTv.text = formatAmountDecimal(calculateSalary.salary * 12)
                 salaryPerYearTv.text = formatAmountDecimal(calculateSalary.salary * 12)
-                opvTv.text = "0.00"
-                ipnTv.text = "0.00"
+                opvTv.text = getString(R.string.defaultValueDecimalTenge)
+                ipnTv.text = getString(R.string.defaultValueDecimalTenge)
             }
         }
     }

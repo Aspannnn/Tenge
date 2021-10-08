@@ -1,7 +1,7 @@
 package kz.aspan.tenge
 
 data class CalculateSalary(
-    val salary: Double = 0.00,
+    val salary: Double = 0.00
 ) {
 
     fun opv(): Double {
