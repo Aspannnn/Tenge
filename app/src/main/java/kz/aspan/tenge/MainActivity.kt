@@ -18,31 +18,30 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.apply {
-
             onHandsCb.setOnCheckedChangeListener { _, isChecked ->
                 onHand = isChecked
-                val num = salaryEt.text?.replace("\\s+".toRegex(), "") ?: "0"
+                val num = salaryEt.text?.replace("\\s+".toRegex(), "")
+
+                val num1 = if (num.isNullOrEmpty()) "0" else num
+
                 val salary = if (onHand) {
-                    (num.toDouble() - 4250) / 0.81
+                    (num1.toDouble() - 4250) / 0.81
                 } else {
-                    num.toDouble()
+                    num1.toDouble()
                 }
-                calculateSalary = CalculateSalary(if (salary < 0) num.toDouble() else salary)
+                calculateSalary = CalculateSalary(if (salary < 0) num1.toDouble() else salary)
                 displayInfo()
             }
 
 
             salaryEt.addTextChangedListener(object : TextWatcher {
                 private var current = ""
-                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                }
-
                 override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                     if (p0.toString() != current) {
                         salaryEt.removeTextChangedListener(this)
 
                         val cleanString: String = if (p0.isNullOrEmpty()) {
-                            "0.00"
+                            "0"
                         } else {
                             p0.replace("\\s+".toRegex(), "")
                         }
@@ -67,6 +66,9 @@ class MainActivity : AppCompatActivity() {
                         salaryEt.setSelection(formatAmount(cleanString).length)
                         salaryEt.addTextChangedListener(this)
                     }
+                }
+
+                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 }
 
                 override fun afterTextChanged(p0: Editable?) {
